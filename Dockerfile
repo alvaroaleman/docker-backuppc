@@ -27,6 +27,10 @@ RUN \
     echo "host *"                       >> $TMP_DATA/.ssh/config && \
     echo "    StrictHostKeyChecking no" >> $TMP_DATA/.ssh/config && \
 
+    # Disable basic auth for package generated config
+    sed -i 's/Auth.*//g' $TMP_CONFIG/apache.conf && \
+    sed -i 's/require valid-user//g'  $TMP_CONFIG/apache.conf && \
+
     # Make startscript executable
     chmod ugo+x $STARTSCRIPT
 
