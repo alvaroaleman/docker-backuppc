@@ -1,3 +1,9 @@
+# 1.0.1
+
+Alvaro Aleman (1):
+
+* Remove ssh-key generation from build
+
 # 1.0.0
 
 Alvaro Aleman (8):
