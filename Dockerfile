@@ -20,9 +20,6 @@ RUN \
     mv $PERSISTENT_CONFIG/* $TMP_CONFIG && \
     mv $PERSISTENT_DATA/* $TMP_DATA && \
 
-    # Create a SSH keypair
-    ssh-keygen -N '' -f $TMP_DATA/.ssh/id_rsa && \
-
     # Disable ssh host key checking per default
     echo "host *"                       >> $TMP_DATA/.ssh/config && \
     echo "    StrictHostKeyChecking no" >> $TMP_DATA/.ssh/config && \
