@@ -2,3 +2,4 @@ Makefile
 .gitignore
 README.md
 LICENSE
+release.sh
