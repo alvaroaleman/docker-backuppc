@@ -1,0 +1,39 @@
+FROM debian:jessie
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV TMP_CONFIG /backuppc_initial_config
+ENV TMP_DATA /backuppc_initial_data
+ENV PERSISTENT_CONFIG /etc/backuppc
+ENV PERSISTENT_DATA /var/lib/backuppc
+ENV STARTSCRIPT /usr/local/bin/dockerstart.sh
+
+ADD startscript.sh $STARTSCRIPT
+
+RUN \
+    # Install packages \
+    apt-get update -y && \
+    echo 'backuppc backuppc/reconfigure-webserver multiselect apache2' | debconf-set-selections && \
+    apt-get install -y debconf-utils backuppc supervisor && \
+
+    # Configure package config to a temporary folder to be able to restore it when no config is present
+    mkdir -p $TMP_CONFIG $TMP_DATA/.ssh && \
+    mv $PERSISTENT_CONFIG/* $TMP_CONFIG && \
+    mv $PERSISTENT_DATA/* $TMP_DATA && \
+
+    # Create a SSH keypair
+    ssh-keygen -N '' -f $TMP_DATA/.ssh/id_rsa && \
+
+    # Disable ssh host key checking per default
+    echo "host *"                       >> $TMP_DATA/.ssh/config && \
+    echo "    StrictHostKeyChecking no" >> $TMP_DATA/.ssh/config && \
+
+    # Make startscript executable
+    chmod ugo+x $STARTSCRIPT
+
+ADD supervisor.conf /etc/supervisor/conf.d/supervisord.conf
+
+EXPOSE 80
+VOLUME $PERSISTENT_DATA
+VOLUME $PERSISTENT_CONFIG
+
+cmd $STARTSCRIPT 
