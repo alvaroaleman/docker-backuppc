@@ -1,3 +1,11 @@
+# 1.0.2
+
+Alvaro Aleman (3):
+
+* Fix startscript
+* Fix Makefile intendation
+* Use / as BackuPC root uri
+
 # 1.0.1
 
 Alvaro Aleman (1):
