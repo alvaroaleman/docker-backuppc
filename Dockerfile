@@ -28,6 +28,9 @@ RUN \
     sed -i 's/Auth.*//g' $TMP_CONFIG/apache.conf && \
     sed -i 's/require valid-user//g'  $TMP_CONFIG/apache.conf && \
 
+    # Display Backuppc on / rather than /backuppc
+    sed -i 's/Alias \/backuppc/Alias \//' $TMP_CONFIG/apache.conf && \
+
     # Remove host 'localhost' from package generated config
     sed -i 's/^localhost.*//g' $TMP_CONFIG/hosts && \
 
