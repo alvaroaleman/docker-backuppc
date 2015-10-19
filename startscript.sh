@@ -19,7 +19,7 @@ if [[ ! "$(ls -A $PERSISTENT_DATA)" ]]; then
   mv $TMP_DATA/* $PERSISTENT_DATA
   rm -rf $TMP_DATA
   echo "Creating a ssh keypair"
-  ssh-keygen -N '' -f $PERSISTENT_DATA/.ssh/id_rsa && \
+  ssh-keygen -N '' -f $PERSISTENT_DATA/.ssh/id_rsa
 fi
 
 # Set proper permissions

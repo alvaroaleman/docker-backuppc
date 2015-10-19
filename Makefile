@@ -7,8 +7,8 @@ default:
 	exit 0
 
 clean:
-	-	sudo docker kill $(containername)
-	-	sudo docker rm $(containername)
+	- sudo docker kill $(containername)
+	- sudo docker rm $(containername)
 	- sudo rm -rf $(tmp_configpath) $(tmp_datapath)
 
 build:
