@@ -1,3 +1,9 @@
+# 1.0.3
+
+Alvaro Aleman (1):
+
+* Fix image uri
+
 # 1.0.2
 
 Alvaro Aleman (3):

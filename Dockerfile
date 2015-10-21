@@ -30,6 +30,8 @@ RUN \
 
     # Display Backuppc on / rather than /backuppc
     sed -i 's/Alias \/backuppc/Alias \//' $TMP_CONFIG/apache.conf && \
+    # This is required to load images on /
+    sed -i "s/^\$Conf{CgiImageDirURL} =.*/\$Conf{CgiImageDirURL} = '\/image';/g" $TMP_CONFIG/config.pl && \
 
     # Remove host 'localhost' from package generated config
     sed -i 's/^localhost.*//g' $TMP_CONFIG/hosts && \
