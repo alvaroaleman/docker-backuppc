@@ -1,3 +1,9 @@
+# 1.0.6
+
+Alvaro Aleman (1):
+
+* Add SeLinux compatibility
+
 # 1.0.5
 
 Alvaro Aleman (1):
