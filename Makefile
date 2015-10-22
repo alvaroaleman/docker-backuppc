@@ -19,7 +19,7 @@ logs:
 	sudo docker logs $(containername)
 
 run: clean build
-	sudo docker run -d -v $(tmp_datapath):/var/lib/backuppc -v $(tmp_configpath):/etc/backuppc  -p $(hostport):80 --name $(containername) backuppc:latest
+	sudo docker run -d -v $(tmp_datapath):/var/lib/backuppc:z -v $(tmp_configpath):/etc/backuppc:z  -p $(hostport):80 --name $(containername) backuppc:latest
 
 enter: run logs
 	sudo docker exec -it $(containername) bash
