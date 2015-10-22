@@ -1,3 +1,9 @@
+# 1.0.5
+
+Alvaro Aleman (1):
+
+* Fix startscript
+
 # 1.0.4
 
 Alvaro Aleman (2):
