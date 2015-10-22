@@ -14,7 +14,7 @@ if yes, move the configuration from packaging into it.
 
 * No authentication
 * SSH host key checking **disabled**
-* If the data volume is empty, a new SSH keypear gets generated at startup
+* If the data volume is empty, a new SSH keypair gets generated at startup
 
 ### Volumes
 

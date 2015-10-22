@@ -1,3 +1,10 @@
+# 1.0.4
+
+Alvaro Aleman (2):
+
+* Fix typo
+* Redirect logs to stdout
+
 # 1.0.3
 
 Alvaro Aleman (1):
