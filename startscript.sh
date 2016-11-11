@@ -24,12 +24,9 @@ fi
 
 # Set proper permissions
 echo "Setting permissions"
-chown -R backuppc:www-data $PERSISTENT_CONFIG
+find $PERSISTENT_CONFIG ! -user backuppc -o ! -group backuppc -exec chown backuppc:backuppc {} \;
+find $PERSISTENT_DATA ! -user backuppc -o ! -group backuppc -exec chown backuppc:backuppc {} \;
 chmod -R 0600 $PERSISTENT_DATA/.ssh/*
-
-if find $PERSISTENT_DATA ! -user backuppc -o ! -group backuppc |egrep '.' -q; then
-  chown -R backuppc:backuppc $PERSISTENT_DATA
-fi
 
 # Start supervisord
 echo "Starting supervisord"
