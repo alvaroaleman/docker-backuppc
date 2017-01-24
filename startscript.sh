@@ -26,6 +26,7 @@ fi
 echo "Setting permissions"
 chown -R backuppc:www-data $PERSISTENT_CONFIG
 chown -R backuppc:backuppc $PERSISTENT_DATA
+chmod 775 $PERSISTENT_CONFIG $PERSISTENT_DATA
 chmod -R 0600 $PERSISTENT_DATA/.ssh/*
 
 # Start supervisord
