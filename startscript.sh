@@ -24,10 +24,15 @@ fi
 
 # Set proper permissions
 echo "Setting permissions"
-chown -R backuppc:www-data $PERSISTENT_CONFIG
-chown -R backuppc:backuppc $PERSISTENT_DATA
-chmod 775 $PERSISTENT_CONFIG $PERSISTENT_DATA
-chmod -R 0600 $PERSISTENT_DATA/.ssh/*
+if [ $RESET_PERMISSIONS == 'true' ] ; then
+  chown -R backuppc:www-data $PERSISTENT_CONFIG
+  chown -R backuppc:backuppc $PERSISTENT_DATA
+  chmod 775 $PERSISTENT_CONFIG $PERSISTENT_DATA
+  if [ ! -d $PERSISTENT_DATA/.ssh ] ; then
+    mkdir -p $PERSISTENT_DATA/.ssh
+  fi
+  chmod -R 0600 $PERSISTENT_DATA/.ssh/*
+fi
 
 # Start supervisord
 echo "Starting supervisord"
