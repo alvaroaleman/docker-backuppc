@@ -6,6 +6,7 @@ ENV TMP_DATA /backuppc_initial_data
 ENV PERSISTENT_CONFIG /etc/backuppc
 ENV PERSISTENT_DATA /var/lib/backuppc
 ENV STARTSCRIPT /usr/local/bin/dockerstart.sh
+ENV RESET_PERMISSIONS true
 
 ADD startscript.sh $STARTSCRIPT
 
@@ -45,4 +46,4 @@ EXPOSE 80
 VOLUME $PERSISTENT_DATA
 VOLUME $PERSISTENT_CONFIG
 
-cmd $STARTSCRIPT 
+cmd $STARTSCRIPT
