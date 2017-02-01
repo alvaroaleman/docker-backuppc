@@ -23,8 +23,8 @@ if [[ ! "$(ls -A $PERSISTENT_DATA)" ]]; then
 fi
 
 # Set proper permissions
-echo "Setting permissions"
 if [ $RESET_PERMISSIONS == 'true' ] ; then
+  echo "Setting permissions"
   chown -R backuppc:www-data $PERSISTENT_CONFIG
   chown -R backuppc:backuppc $PERSISTENT_DATA
   chmod 775 $PERSISTENT_CONFIG $PERSISTENT_DATA
